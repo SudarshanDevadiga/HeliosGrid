@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Baking the new Docker container...'
-                sh 'docker build -t heliosgrid-app:latest .'
+                sh 'docker build -t heliosgrid-app::v2 .'
             }
         }
     }
