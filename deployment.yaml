@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heliosgrid-deployment
+  labels:
+    app: heliosgrid
+spec:
+  replicas: 3 # Tells Kubernetes to always keep 3 identical copies running for high availability!
+  selector:
+    matchLabels:
+      app: heliosgrid
+  template:
+    metadata:
+      labels:
+        app: heliosgrid
+    spec:
+      containers:
+      - name: heliosgrid-app
+        image: heliosgrid-app:v1 # Uses the Docker image you built earlier
+        imagePullPolicy: IfNotPresent # Tells K8s to look on your laptop for the image instead of downloading it
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heliosgrid-service
+spec:
+  type: NodePort # Exposes the application to your Mac's network
+  selector:
+    app: heliosgrid
+  ports:
+    - protocol: TCP
+      port: 8080      # The port inside the cluster
+      targetPort: 8080 # The port on the container
+      nodePort: 30080 # The port you will open in your browser on your Mackubectl apply -f deployment.yaml
