@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: heliosgrid-app
-        image: heliosgrid-app::v2 # Uses the Docker image you built earlier
+        image: heliosgrid-app:v3 # Uses the Docker image you built earlier
         imagePullPolicy: IfNotPresent # Tells K8s to look on your laptop for the image instead of downloading it
         ports:
         - containerPort: 8080
