@@ -20,6 +20,11 @@ In the renewable energy sector, managing physical infrastructure requires contin
 
 ---
 
+## System Command Center
+![Grafana Dashboard](grafana-dashboard.png)
+
+---
+
 ## 🛠️ Architecture & Tech Stack
 
 * **Application:** Python (Flask/FastAPI) simulating live IoT hardware telemetry.
